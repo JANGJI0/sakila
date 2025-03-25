@@ -194,6 +194,45 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+	<style>
+	 .nolink {  /*링크 밑줄 제거 */
+	 	text-decoration: none;
+	 	color: black; /* 필요시 색상 지정 */
+	 }
+	 
+	 	.nolink:hover {
+	 		color: #007b; /* 마우스 오버 시 색상 변경 */
+	 	}
+	 	
+	 	/*border말고 다른 테이블 코드*/
+	 	table {
+	 		width: 100%;
+	 		border-collapse: separate; /* 중요: collapse명 둥글게 안 보임*/
+	 		border-spacing: 50;		/* 셀 간격*/
+	 		border-radus: 100px;		/* 둥근 모서리*/	
+	 		overflow: hidden;        /* 꼭 필요: 둥근 모서리가 잘리지 않게*/
+	 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 그림자도 예쁘게*/
+	 	}	
+	 	th, td {
+	 		padding: 12px 16px;
+	 		text-align: left;
+	 		background-color: #fff;
+	 	}
+	 	
+	 	th {
+	 		background-color: #f4F4F4;
+	 		front-weight: bold;
+	 	}
+	 	
+	 	th:nth-child(even) {
+	 		background-color: #f9f9f9;
+	 	}
+	 	
+	 	th:hover {
+	 		background-color: #eef6ff;
+	 	}
+	 	
+	</style>
 </head>
 <body>
 	<h1>Rental List</h1>
@@ -207,7 +246,7 @@
 		<button type="submit">검색</button>
 	</form>
 	
-	<table border="1">
+	<table>
 		<tr>
 			<th>rentalId</th>
 			<th>filmTitle</th>
@@ -222,7 +261,7 @@
 				
 			<tr>
 				<th><%=map.get("rentalId") %></th>
-				<th><%=map.get("filmTitle") %></th>
+				<th><a class="nolink" href="/sakila/d0325/filmTitleDetail.jsp?filmTitle=<%=map.get("filmTitle")%>"><%=map.get("filmTitle") %></a></th>
 				<th><%=map.get("inventoryId") %></th>
 				<th><%=map.get("customer") %>(<%=map.get("customerId") %>)</th>
 				<th><%=map.get("rentalDate") %></th>
