@@ -78,27 +78,24 @@
 		 	.nolink:hover {
 		 		color: #007b; /* 마우스 오버 시 색상 변경 */
 		 	}
-		 		/*border말고 다른 테이블 코드*/
+		 	/*border말고 다른 테이블 코드*/
 	 	table {
 	 		width: 50%;
 	 		border-collapse: separate; /* 중요: collapse명 둥글게 안 보임*/
 	 		border-spacing: 50;		/* 셀 간격*/
-	 		border-radius: 5px;		/* 둥근 모서리*/	
+	 		border-radus: 100px;		/* 둥근 모서리*/	
 	 		overflow: hidden;        /* 꼭 필요: 둥근 모서리가 잘리지 않게*/
 	 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 그림자도 예쁘게*/
-	 		border: 2px solid #ccc;
 	 	}	
 	 	th, td {
 	 		padding: 12px 16px;
 	 		text-align: left;
 	 		background-color: #fff;
-	 		border: 1px solid #bbb;
 	 	}
 	 	
 	 	th {
 	 		background-color: #f4F4F4;
-	 		font-weight: bold;
-	 		color: #000;
+	 		front-weight: bold;
 	 	}
 	 	
 	 	th:nth-child(even) {
