@@ -3,6 +3,14 @@
 <%@ page import="java.util.*" %>
 <%
 	// controller 단
+	// 로그인 되었는지 아닌지?
+	Integer staffId = (Integer)(session.getAttribute("loginStaff"));
+			
+	if(staffId != null) { // 로그인 상태라면
+		response.sendRedirect("/sakila/index.jsp");
+		return;
+	}
+	
 		//검색 
 	String searchWord = request.getParameter("searchWord");
 	if(request.getParameter("searchWord") == null) {
@@ -155,6 +163,11 @@
 	</style>
 </head>
 <body>
+	<!--  로그아웃 추가 -->
+	<div>
+		<%=staffId %>님 반갑습니다.
+		<a href="/sakila/logout.jsp">로그아웃</a>
+	</div>
 	<h1>영화배우 리스트</h1>
 	<table border="1">
 		<tr>
