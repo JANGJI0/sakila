@@ -6,7 +6,7 @@
 	// 로그인 되었는지 아닌지?
 	Integer staffId = (Integer)(session.getAttribute("loginStaff"));
 			
-	if(staffId != null) { // 로그인 상태라면
+	if(staffId == null) { // 로그인 상태라면
 		response.sendRedirect("/sakila/index.jsp");
 		return;
 	}

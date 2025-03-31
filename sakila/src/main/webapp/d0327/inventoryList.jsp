@@ -8,7 +8,7 @@
 		// 로그인 되었는지 아닌지?
 	Integer staffId = (Integer)(session.getAttribute("loginStaff"));
 			
-	if(staffId != null) { // 로그인 상태라면
+	if(staffId == null) { // 로그인 안 한 상태라면
 		response.sendRedirect("/sakila/index.jsp");
 		return;
 	}
@@ -58,7 +58,7 @@
 					+ "	FROM rental"
 					+ "	GROUP BY inventory_id)"; */
 	
-	String listSql = "SELECT t1.inventory_id invenId, t1.title title, t2.return_date reDate, isRental"
+	String listSql = "SELECT t1.inventory_id inventoryId, t1.title title, t2.return_date reDate, isRental"
 					 + " FROM"
 		   			 + " (SELECT i.inventory_id, f.title"
 		  			 + " FROM inventory i "
@@ -167,7 +167,7 @@
 		ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
 			while(rs.next()) {
 				HashMap<String, Object> map = new HashMap<String, Object>();
-				map.put("invenId", rs.getObject("invenId"));
+				map.put("inventoryId", rs.getObject("inventoryId"));
 				map.put("title", rs.getObject("title"));
 				map.put("reDate", rs.getString("reDate"));
 				map.put("isRental", rs.getObject("isRental"));
@@ -239,15 +239,43 @@
 				<th>영화제목</th>
 				<th>반납일</th>
 				<th>대여 여부</th>
+				<th>대여하기</th>
+				<th>반납하기</th>
 			</tr>
+			<div>
+				<a href=""></a>
+			</div>
 			<%
 				for(HashMap<String, Object> map : list) {
 			%>
 				<tr>
-					<td><%=map.get("invenId") %></td>
+					<td><%=map.get("inventoryId") %></td>
 					<td><%=map.get("title") %></td>
 					<td><%=map.get("reDate") %></td>
-					<td><a class="nolink" href="/sakila/d0327/inventoryOne.jsp?filmId=<%=map.get("filmId") %>"><%=map.get("isRental") %></td>
+					<td><%=map.get("isRental") %></td>
+					<% 
+						if (map.get("isRental") != null) {
+					%>
+					<td><a class="nolink" href="/sakila/d0327/insertRentalForm.jsp?inventoryId=<%=map.get("inventoryId") %>">
+						<button type="submit">대여하기</button>
+						</a>
+					</td>
+					<td>-</td>
+					<% 
+						} else {
+					%>
+						<td>-</td>
+						<td>
+						<a class="nolink" href="/sakila/d0327/insertRentalForm.jsp?inventoryId=<%=map.get("inventoryId") %>">
+						<button type="submit">반납하기</button>
+						</a>
+						</td>
+						
+					<%
+						}
+					System.out.println("inventoryId: " + map.get("inventoryId"));
+					%>
+					
 				</tr>
 			<%
 				}

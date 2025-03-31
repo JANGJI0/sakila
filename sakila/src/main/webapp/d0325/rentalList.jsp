@@ -6,7 +6,7 @@
 	//로그인 되었는지 아닌지?
 	Integer staffId = (Integer)(session.getAttribute("loginStaff"));
 			
-	if(staffId != null) { // 로그인 상태라면
+	if(staffId == null) { // 로그인 상태라면
 		response.sendRedirect("/sakila/index.jsp");
 		return;
 	}
@@ -190,8 +190,8 @@
 				map.put("inventoryId", rs.getObject("inventoryId"));
 				map.put("customer", rs.getObject("customer"));
 				map.put("customerId", rs.getObject("customerId"));
-				map.put("rentalDate", rs.getObject("rentalDate"));
-				map.put("returnDate", rs.getObject("returnDate"));
+				map.put("rentalDate", rs.getString("rentalDate"));
+				map.put("returnDate", rs.getString("returnDate"));
 				
 				list.add(map);
 	}
