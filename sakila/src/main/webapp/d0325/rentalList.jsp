@@ -279,7 +279,25 @@
 				<th><%=map.get("inventoryId") %></th>
 				<th><%=map.get("customer") %>(<%=map.get("customerId") %>)</th>
 				<th><%=map.get("rentalDate") %></th>
-				<th><%=map.get("returnDate") %></th>
+				<th>
+				<%
+					String returnDate = (String)map.get("returnDate");
+					if(returnDate == null) {
+				%>
+					<a class="nolink" href="/sakila/d0327/returnRentalAction.jsp?rentalId=<%=map.get("rentalId")%>">
+					<button type="submit">반납하기</button>
+				<%
+					} else {
+				%>
+				
+				<%
+				%>
+					<%=returnDate%>  <!-- 반납일 출력 -->
+				<%		
+				
+					}
+				%>
+				</th>
 			</tr>
 		<%
 			}

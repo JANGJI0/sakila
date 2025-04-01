@@ -241,7 +241,6 @@
 				<th>반납일</th>
 				<th>대여 여부</th>
 				<th>대여하기</th>
-				<th>반납하기</th>
 			</tr>
 			<div>
 				<a href=""></a>
@@ -262,17 +261,13 @@
 						<button type="submit">대여하기</button>
 						</a>
 					</td>
-					<td>-</td>
+					
 					<% 
 						} else {
 					%>
-						<td>-</td>
-						<td>
-						<a class="nolink" href="/sakila/d0327/insertRentalForm.jsp?inventoryId=<%=map.get("inventoryId") %>">
-						<button type="submit">반납하기</button>
-						</a>
+						<td style="text-align: center;">
+						<a class="nolink" href="/sakila/d0327/insertRentalForm.jsp?inventoryId=<%=map.get("inventoryId") %>">-</a>
 						</td>
-						
 					<%
 						}
 					System.out.println("inventoryId: " + map.get("inventoryId"));
