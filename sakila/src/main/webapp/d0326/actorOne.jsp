@@ -6,7 +6,7 @@
 	// 로그인 되었는지 아닌지?
 	Integer staffId = (Integer)(session.getAttribute("loginStaff"));
 			
-	if(staffId != null) { // 로그인 상태라면
+	if(staffId == null) { // 로그인 상태라면
 		response.sendRedirect("/sakila/index.jsp");
 		return;
 	}
@@ -120,6 +120,7 @@
 	<!--  로그아웃 추가 -->
 	<div>
 		<%=staffId %>님 반갑습니다.
+		<a href="/sakila/index.jsp">&#127968;으로이동</a>&nbsp;
 		<a href="/sakila/logout.jsp">로그아웃</a>
 	</div>
 	<h1>영화배우 상세페이지</h1>

@@ -9,7 +9,7 @@
 	Integer staffId = (Integer)(session.getAttribute("loginStaff"));
 			
 	if(staffId == null) { // 로그인 안 한 상태라면
-		response.sendRedirect("/sakila/index.jsp");
+		response.sendRedirect("/sakila/loginForm.jsp");
 		return;
 	}
 	// 제목 검색, 대여가능 검색
@@ -230,6 +230,7 @@
 	<!--  로그아웃 추가 -->
 	<div>
 		<%=staffId %>님 반갑습니다.
+		<a href="/sakila/index.jsp">&#127968;으로이동</a>&nbsp;
 		<a href="/sakila/logout.jsp">로그아웃</a>
 	</div>
 	<h1>인벤토리 목록</h1>
@@ -254,7 +255,8 @@
 					<td><%=map.get("reDate") %></td>
 					<td><%=map.get("isRental") %></td>
 					<% 
-						if (map.get("isRental") != null) {
+						String isRental = (String) map.get("isRental");
+						if (isRental != null && !isRental.equals("대여불가")) {
 					%>
 					<td><a class="nolink" href="/sakila/d0327/insertRentalForm.jsp?inventoryId=<%=map.get("inventoryId") %>">
 						<button type="submit">대여하기</button>

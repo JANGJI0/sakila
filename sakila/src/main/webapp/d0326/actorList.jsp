@@ -166,6 +166,7 @@
 	<!--  로그아웃 추가 -->
 	<div>
 		<%=staffId %>님 반갑습니다.
+		<a href="/sakila/index.jsp">&#127968;으로이동</a>&nbsp;
 		<a href="/sakila/logout.jsp">로그아웃</a>
 	</div>
 	<h1>영화배우 리스트</h1>

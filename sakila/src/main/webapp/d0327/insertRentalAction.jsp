@@ -13,6 +13,8 @@
 	//  변수 받기
 	Integer inventoryId = Integer.parseInt(request.getParameter("inventoryId"));
 	Integer customerId = Integer.parseInt(request.getParameter("customerId"));
+	Integer filmId = Integer.parseInt(request.getParameter("filmId"));
+	Integer storeId = Integer.parseInt(request.getParameter("storeId"));
 
 	// model 단
 	
@@ -28,7 +30,7 @@
 	conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sakila", "root", "java1234");
 	
 	// 3) sql 준비
-	String sql = "INSERT INTO rental(rental_date, inventory_id, customer_id, staff_id) VALUES (now(), ?, ?, ?)";
+	String sql = "INSERT INTO rental(inventory_id, customer_id, staff_id, rental_date) VALUES (?, ?, ?, now(3))";
 	
 	stmt = conn.prepareStatement(sql);
 	stmt.setInt(1, inventoryId);
@@ -36,7 +38,27 @@
 	stmt.setInt(3, staffId);
 	// 디버깅
 	System.out.println(stmt);
-	stmt.executeLargeUpdate();
+	
+	int row = stmt.executeUpdate();
+	
+	if(row == 1) {
+			System.out.println("대여 완료");
+	
+	} else {
+			
+			System.out.println("대여 불가");
+	}
 	
 	response.sendRedirect("/sakila/d0325/rentalList.jsp");
 %>
+
+
+
+
+
+
+
+
+
+
+

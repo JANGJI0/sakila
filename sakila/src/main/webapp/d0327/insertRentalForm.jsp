@@ -6,7 +6,7 @@
 	Integer staffId = (Integer)(session.getAttribute("loginStaff"));
 			
 	if(staffId == null) { // 로그인 안 한 상태라면
-		response.sendRedirect("/sakila/index.jsp");
+		response.sendRedirect("/sakila/loginForm.jsp");
 		return;
 	}
 	
@@ -26,6 +26,7 @@
 	conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sakila", "root", "java1234");
 	stmt = conn.prepareStatement(sql);
 	stmt.setInt(1, inventoryId);
+	
 	System.out.println(stmt);
 	rs = stmt.executeQuery();
 %>
@@ -45,7 +46,7 @@
 	<form action="/sakila/d0327/searchCustomIdList.jsp" method="post">
 		<input type="hidden" name="inventoryId" value="<%=inventoryId %>">
 		<input type="text" name="searchName">
-		<button type="submit">이름으로 customerId 검색</button>
+		<button type="submit">이름으로 회원아이디 검색</button>
 	</form>
 	<!--  customerListByName.jsp -> insertRentalForm.jsp 
 	-->

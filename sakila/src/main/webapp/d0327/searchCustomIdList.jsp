@@ -119,6 +119,7 @@
 	 	}
 	 	
 	</style>
+		<a href="/sakila/d0327/inventoryList.jsp">[inventoryList]</a>
 	<table>
 		<tr>
 			<th>customerId</th>
@@ -142,7 +143,7 @@
 						<%
 						 if(rs.getInt("active") == 0) {
 						%>
-							<a href="/sakila/d0327/updateCustomerActive.jsp"> 휴면상태 해지</a><!-- customer.active 0을 1로 변경 -->
+							<a href='/sakila/d0327/updateCustomerActive.jsp?active=<%=rs.getInt("active")%>&customerId=<%=rs.getInt("customerId")%>'> 휴면상태 해지</a><!-- customer.active 0을 1로 변경 -->
 						<%
 						 	} else {
 						%>

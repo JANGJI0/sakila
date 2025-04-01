@@ -56,7 +56,7 @@
 					+ " JOIN store s ON c.store_id = s.store_id"
 					+ " JOIN inventory i ON r.inventory_id = i.inventory_id"
 					+ " JOIN film f ON i.film_id = f.film_id"
-					+ " ORDER BY r.rental_id ASC LIMIT ?, ?";
+					+ " ORDER BY r.rental_date DESC LIMIT ?, ?";
 	String sql2 = " SELECT count(*) cnt"
 					+ " FROM rental r"
 					+ " JOIN customer c ON r.customer_id = c.customer_id"
@@ -87,7 +87,7 @@
 				+ " JOIN customer c ON r.customer_id = c.customer_id"
 				+ " JOIN store s ON c.store_id = s.store_id"
 				+ " JOIN inventory i ON r.inventory_id = i.inventory_id"
-				+ " JOIN film f ON i.film_id = f.film_id WHERE c.store_id = ? ORDER BY r.rental_id LIMIT ?, ?";
+				+ " JOIN film f ON i.film_id = f.film_id WHERE c.store_id = ? ORDER BY r.rental_date DESC LIMIT ?, ?";
 		sql2 = " SELECT count(*) cnt" 
 				+ " FROM rental r"
 				+ " JOIN customer c ON r.customer_id = c.customer_id"
@@ -110,7 +110,7 @@
 				+ " JOIN customer c ON r.customer_id = c.customer_id"
 				+ " JOIN store s ON c.store_id = s.store_id"
 				+ " JOIN inventory i ON r.inventory_id = i.inventory_id"
-				+ " JOIN film f ON i.film_id = f.film_id WHERE f.title like ? ORDER BY r.rental_id LIMIT ?, ?";
+				+ " JOIN film f ON i.film_id = f.film_id WHERE f.title like ? ORDER BY r.rental_date DESC LIMIT ?, ?";
 		sql2 = " SELECT count(*) cnt" 
 				+ " FROM rental r"
 				+ " JOIN customer c ON r.customer_id = c.customer_id"
@@ -133,7 +133,7 @@
 				+ " JOIN customer c ON r.customer_id = c.customer_id"
 				+ " JOIN store s ON c.store_id = s.store_id"
 				+ " JOIN inventory i ON r.inventory_id = i.inventory_id"
-				+ " JOIN film f ON i.film_id = f.film_id WHERE c.store_id = ? AND f.title like ? ORDER BY r.rental_id LIMIT ?, ?";
+				+ " JOIN film f ON i.film_id = f.film_id WHERE c.store_id = ? AND f.title like ? ORDER BY r.rental_date DESC LIMIT ?, ?";
 		sql2 = " SELECT count(*) cnt" 
 				+ " FROM rental r"
 				+ " JOIN customer c ON r.customer_id = c.customer_id"
@@ -246,6 +246,7 @@
 	<!--  로그아웃 추가 -->
 	<div>
 		<%=staffId %>님 반갑습니다.
+		<a href="/sakila/index.jsp">&#127968;으로이동</a>&nbsp;
 		<a href="/sakila/logout.jsp">로그아웃</a>
 	</div>
 	<h1>Rental List</h1>
